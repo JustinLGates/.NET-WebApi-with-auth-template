@@ -17,7 +17,7 @@ namespace Controllers
     {
       _MessageService = messageService;
     }
-    // NOTE AVALABLE TO ANY ONE THAT WANTS MORE INFORMATION
+    //NOTE Anyone can access this controller route
     [HttpPost]
     public ActionResult<Message> Create([FromBody] Message message)
     {
@@ -30,18 +30,17 @@ namespace Controllers
         return BadRequest(e.Message);
       }
     }
-
-    //  NOTE FOR ADMIN USE ONLY NO PUBLIC ACCESS ALLOWED
+    //NOTE locked down only a loged in user can access this controller route
     [Authorize]
     [HttpGet]
     public ActionResult<IEnumerable<Message>> Get()
     {
       try
       {
-        var nameIdentifier = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+        var nameIdentifier = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier);
         if (nameIdentifier != null)
         {
-          return Ok(_MessageService.Get(nameIdentifier));
+          return Ok(_MessageService.Get(nameIdentifier.Value));
         }
         else
         {

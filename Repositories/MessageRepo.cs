@@ -1,4 +1,3 @@
-using System;
 using System.Data;
 using Dapper;
 using Models;
@@ -30,8 +29,13 @@ namespace Repositories
       return MessageData;
     }
 
-    internal IEnumerable<Message> Get()
+    internal IEnumerable<Message> Get(string nameIdentifier)
     {
+      //NOTE nameIdentifier is avalabe if you want use a where statement in your sql to find only messages they sent
+      //EXAMPLE:
+      // string sql = "SELECT * FROM messages WHERE email = @Email";
+      // return _db.Query<Message>(sql,new {nameIdentifier});
+
       string sql = "SELECT * FROM messages";
       return _db.Query<Message>(sql);
     }

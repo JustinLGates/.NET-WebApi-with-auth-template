@@ -1,4 +1,3 @@
-using System;
 using Repositories;
 using Models;
 using System.Collections.Generic;
@@ -20,8 +19,7 @@ namespace Services
 
     internal IEnumerable<Message> Get(string nameIdentifier)
     {
-      //TODO ADD CONDITION FOR NAME IDENTIFIER FOR JUST ADMIN ACCOUNTS
-      return _repo.Get();
+      return _repo.Get(nameIdentifier);
     }
   }
 
