@@ -1,12 +1,12 @@
 # .NET-WebApi-with-auth-template
 
-This template is set up with JwtBearer authentication, and database.
+This template is set up with JwtBearer authentication, and a gearhost sql database.
 
 # Setup
 
 ## Step 1
 
-use template to create your project
+use the template to create your project
 
 ## Step 2
 
@@ -16,14 +16,15 @@ dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
 dotnet add package MySqlConnector
 
 ## Step 3
+If you do not have Gearhost and Auth0 account go set them up now.
 
-Add app settings json files to the root directory
+Add app settings JSON files to the root directory.
 
 appsettings.json
 appsettings.Development.json
 
 These files are used to set the connection and authentication for your application.
-The example below is what needs to go inside just add in your own credentals.
+The example below is what needs to go inside just add in your own credentials.
 
 Example :
 
@@ -38,3 +39,6 @@ Example :
 }
 
 }
+
+# All set 
+One thing i am looking to improve is naming the csproj files. Please let me know if you know if your interested in helping. 
